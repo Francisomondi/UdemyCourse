@@ -1,0 +1,25 @@
+{
+  "name": "udemycourse",
+  "version": "1.0.0",
+  "description": "udemy node js course code",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Francisomondi/UdemyCourse.git"
+  },
+  "keywords": [
+    "udemy",
+    "certificate",
+    "node",
+    "js"
+  ],
+  "author": "francis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Francisomondi/UdemyCourse/issues"
+  },
+  "homepage": "https://github.com/Francisomondi/UdemyCourse#readme"
+}
