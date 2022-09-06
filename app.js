@@ -72,6 +72,26 @@ app.put("/api/courses/:id", (req, res) => {
 })
 
 
+//delete request
+
+app.delete("/api/courses/:id", (req, res) => {
+    const course = courses.find(c => c.id === parseInt(req.params.id))
+    if (!course) res.status(404).send(`The course with this is was not found`)
+
+    //delete
+    const index = courses.indexOf(course)
+    //course.splice(index, 1)
+    if (index > -1) {
+
+        //splice it
+        courses.splice(index, 1);
+
+        //set value to element
+        res.send(course)
+    }
+
+})
+
 
 function validateCourse(course) {
     const schema = Joi.object({
