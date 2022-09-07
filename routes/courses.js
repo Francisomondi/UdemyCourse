@@ -1,13 +1,29 @@
 const express = require("express")
-const app = express()
+const router = express.Router()
 const Joi = require("joi")
+
+//courses data
+const courses = [{
+        id: 1,
+        name: "Chemestry"
+    },
+    {
+        id: 2,
+        name: "physics"
+    },
+    {
+        id: 3,
+        name: "history"
+    }
+]
+
 //get all courses
-app.get("/", (req, res) => {
+router.get("/", (req, res) => {
     res.send(courses)
 })
 
 //get single course
-app.get("/:id", (req, res) => {
+router.get("/:id", (req, res) => {
     const course = courses.find(c => c.id === parseInt(req.params.id))
     if (!course) return res.status(404).send(`The course with this ID was not found`)
     res.send(course)
@@ -15,7 +31,7 @@ app.get("/:id", (req, res) => {
 })
 
 //add course
-app.post("/", (req, res) => {
+router.post("/", (req, res) => {
 
     const {
         error
@@ -31,7 +47,7 @@ app.post("/", (req, res) => {
 })
 
 //update courses
-app.put("/:id", (req, res) => {
+router.put("/:id", (req, res) => {
     const course = courses.find(c => c.id === parseInt(req.params.id))
     if (!course) return res.status(404).send(`The course with this is was not found`)
 
@@ -50,7 +66,7 @@ app.put("/:id", (req, res) => {
 
 
 //delete request
-app.delete("/:id", (req, res) => {
+router.delete("/:id", (req, res) => {
     const course = courses.find(c => c.id === parseInt(req.params.id))
     if (!course) return res.status(404).send(`The course with this is was not found`)
 
@@ -75,4 +91,4 @@ function validateCourse(course) {
     return schema.validate(course);
 }
 
-module.exports = app
+module.exports = router
